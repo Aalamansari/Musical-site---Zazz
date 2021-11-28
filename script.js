@@ -60,17 +60,29 @@ const makeAllPlays = ()=>{
 
 Array.from(document.getElementsByClassName('songItemPlay')).forEach((element)=>{
     element.addEventListener('click', (e)=>{
-       makeAllPlays();
+        if(audioElement.paused || audioElement.currentTime<=0){
+            makeAllPlays();
        songIndex =parseInt(e.target.id);
        e.target.classList.remove('fa-play-circle');
        e.target.classList.add('fa-pause-circle');
        audioElement.src = `songs/${songIndex}.mp3`;
+       console.log(audioElement.currentTime);
        masterSongName.innerText = songs[songIndex-1].songName;
-       audioElement.currentTime =0;
+    //    audioElement.currentTime = 0
        audioElement.play();
        gif.style.opacity = 1;
        masterplay.classList.remove('fa-play-circle');
        masterplay.classList.add('fa-pause-circle');
+        }
+        else{
+            audioElement.pause();
+            masterplay.classList.remove('fa-pause-circle');
+            masterplay.classList.add('fa-play-circle');
+            gif.style.opacity = 0;
+            e.target.classList.add('fa-play-circle');
+            e.target.classList.remove('fa-pause-circle');
+        }
+       
     })
 }) 
 
