@@ -42,7 +42,6 @@ nav ul li{
 
 .container{
     min-height: 65vh;
-    background-color: #FF96AD;    /*middle box wala color*/
     color: white;
     font-family: 'Varela Round', 'sans-serif';
     display: flex;
@@ -119,4 +118,12 @@ nav ul li{
 .songInfo img{
     opacity: 0;
     transition: opacity 0.4s ease-in;
+}
+
+.about{
+    cursor: pointer;
+}
+
+.home{
+    cursor: pointer;
 }
